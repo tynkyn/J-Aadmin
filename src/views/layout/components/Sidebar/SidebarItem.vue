@@ -11,8 +11,8 @@
 
       <el-submenu v-else :index="item.name||item.path" :key="item.name">
         <template slot="title">
-          <svg-icon v-if="item.meta&&item.meta.icon" :icon-class="item.meta.icon"></svg-icon>
-          <span v-if="item.meta&&item.meta.title">{{generateTitle(item.meta.title)}}</span>
+          <svg-icon v-if="item&&item.icon" :icon-class="item.icon"></svg-icon>
+          <span v-if="item&&item.name">{{generateTitle(item.name)}}</span>
         </template>
 
         <template v-for="child in item.children" v-if="!child.hidden">
@@ -20,12 +20,13 @@
 
           <router-link v-else :to="item.path+'/'+child.path" :key="child.name">
             <el-menu-item :index="item.path+'/'+child.path">
-              <svg-icon v-if="child.meta&&child.meta.icon" :icon-class="child.meta.icon"></svg-icon>
-              <span v-if="child.meta&&child.meta.title">{{generateTitle(child.meta.title)}}</span>
+              <svg-icon v-if="child&&child.icon" :icon-class="child.icon"></svg-icon>
+              <span v-if="child&&child.name">{{generateTitle(child.name)}}</span>
             </el-menu-item>
           </router-link>
         </template>
       </el-submenu>
+
 
     </template>
   </div>
@@ -48,6 +49,7 @@ export default {
   methods: {
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {
+        console.log('item: ', item)
         return !item.hidden
       })
       if (showingChildren.length === 1) {
