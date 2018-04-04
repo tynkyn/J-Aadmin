@@ -12,13 +12,13 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token) {
-    console.log('11')
+    // console.log('11')
     config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
   return config
 }, error => {
   // Do something with request error
-  console.log('22')
+  // console.log('22')
   console.log(error) // for debug
   Promise.reject(error)
 })
@@ -51,12 +51,12 @@ service.interceptors.response.use(
     //   }
     //   return Promise.reject('error')
     // } else {
-    console.log('33', response)
+    // console.log('33', response)
     return response.data
     // }
   },
   error => {
-    console.log('44')
+    // console.log('44')
     console.log('err' + error)// for debug
     Message({
       message: error.message,
