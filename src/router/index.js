@@ -110,10 +110,10 @@ export const asyncRouterMap = [
     authority: 'baseManager',
     children: [{
       path: 'userManager',
-      icon: 'fa-user',
-      component: _import('admin/user/index'),
       name: '用户管理',
-      authority: 'userManager'
+      icon: 'fa-user',
+      authority: 'userManager',
+      component: _import('admin/user/index')
     }, {
       path: 'menuManager',
       icon: 'category',
@@ -154,6 +154,77 @@ export const asyncRouterMap = [
       title: '图标管理',
       authority: 'iconManager'
     }]
+  },
+  {
+    path: '/tableManager',
+    component: Layout,
+    // redirect: '/example/table/complex-table',
+    name: '表格示例',
+    icon: 'example',
+    authority: 'tableManager',
+    children: [
+      {
+        path: 'tableManager-table',
+        name: '复合表格',
+        title: '复合表格',
+        icon: 'table',
+        authority: 'tableManager-table',
+        component: _import('example/table/index'),
+        // redirect: '/example/table/complex-table',
+        children: [
+          {
+            path: 'dynamic-table',
+            component: _import('example/table/dynamicTable/index'),
+            name: 'dynamicTable',
+            title: 'dynamicTable',
+            authority: 'dynamic-table'
+          },
+          {
+            path: 'drag-table',
+            component: _import('example/table/dragTable'),
+            name: 'dragTable',
+            title: 'dragTable',
+            authority: 'drag-table'
+          },
+          {
+            path: 'inline-edit-table',
+            component: _import('example/table/inlineEditTable'),
+            name: 'inlineEditTable',
+            title: 'inlineEditTable',
+            authority: 'inline-edit-table'
+          },
+          {
+            path: 'tree-table',
+            component: _import('example/table/treeTable/treeTable'),
+            name: 'treeTableDemo',
+            title: 'treeTable',
+            authority: 'tree-table'
+          },
+          {
+            path: 'custom-tree-table',
+            component: _import('example/table/treeTable/customTreeTable'),
+            name: 'customTreeTableDemo',
+            title: 'customTreeTable',
+            authority: 'custom-tree-table'
+          },
+          {
+            path: 'complex-table',
+            component: _import('example/table/complexTable'),
+            name: 'complexTable',
+            title: 'complexTable',
+            authority: 'complex-table'
+          }
+        ]
+      },
+      {
+        path: 'tab/index',
+        icon: 'tab',
+        component: _import('example/tab/index'),
+        name: 'tab',
+        title: 'tab',
+        authority: 'tab/index'
+      }
+    ]
   }
   /*
     {
